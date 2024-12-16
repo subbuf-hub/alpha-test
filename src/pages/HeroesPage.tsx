@@ -4,14 +4,16 @@ import { fetchData } from "../apis/HeroesApi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../stores/HeroesStore";
 import { addHero, loadPageUp } from "../slices/HeroeSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function HeroesPage() {
-  const [page, setPage] = useState(1);
+  const location = useLocation();
+  const [page, setPage] = useState(location.state?.currentPage || 1);
   const [allCountHeroes, setAllCountHeroes] = useState(0);
   const heroesCountinPage = 9;
   const history = useNavigate();
   const dispatch = useDispatch();
+
   const heroes = useSelector((state: RootState) => state.heroes.heroes);
   const laodPage = useSelector((state: RootState) => state.heroes.loadingPage);
   useEffect(() => {
@@ -45,8 +47,9 @@ function HeroesPage() {
       });
     }
   };
+
   const handleCardClick = (id: string) => {
-    history(`/heroes/${id}`);
+    history(`/heroes/${id}`, { state: { currentPage: page } });
   };
   return (
     <div>

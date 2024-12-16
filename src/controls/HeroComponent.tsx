@@ -7,7 +7,7 @@ interface HeroComponentProps {
   onClick: () => void;
 }
 
-function HeroComponent({ heroe }: HeroComponentProps) {
+function HeroComponent({ heroe, onClick }: HeroComponentProps) {
   const dispatch = useDispatch();
 
   const handleLike = (e: React.MouseEvent) => {
@@ -21,9 +21,14 @@ function HeroComponent({ heroe }: HeroComponentProps) {
   };
 
   return (
-    <div className="col-md-4" key={heroe.id}>
+    <div className="col-md-4" key={heroe.id} onClick={onClick}>
       <div className="card" style={{ margin: "10px" }}>
-        <img src={heroe.image} className="card-img-top" alt={heroe.name} />
+        <img
+          src={heroe.image}
+          className="card-img-top"
+          alt={heroe.name}
+          style={{ width: "400px", height: "400px", objectFit: "cover" }}
+        />
         <div className="card-body">
           <h5 className="card-title">{heroe.name}</h5>
           <div className="mb-3">
