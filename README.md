@@ -1,4 +1,4 @@
 Для запуска необходимо в командной строке ввести
 
-npm install
+npm install /n
 npm run dev
