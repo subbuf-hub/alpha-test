@@ -4,11 +4,13 @@ import { Result } from "../models/Result";
 interface HeroesState {
   heroes: Result[];
   loadingPage: number;
+  maxId: number;
 }
 
 const initialState: HeroesState = {
   heroes: [],
   loadingPage: 1,
+  maxId: 0,
 };
 
 const heroesSlice = createSlice({
@@ -47,6 +49,9 @@ const heroesSlice = createSlice({
         state.heroes[index] = { ...state.heroes[index], ...action.payload };
       }
     },
+    setMaxID(state, action: PayloadAction<number>) {
+      state.maxId = action.payload;
+    },
   },
 });
 
@@ -57,6 +62,7 @@ export const {
   deleteHero,
   loadPageUp,
   updateHero,
+  setMaxID,
 } = heroesSlice.actions;
 
 export default heroesSlice.reducer;
