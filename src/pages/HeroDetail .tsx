@@ -26,6 +26,13 @@ const HeroDetail = () => {
         species: hero.species === "Alien" ? "Alien" : "Human",
         gender: hero.gender,
         id: hero.id,
+        created: "",
+        episode: [],
+        isLiked: false,
+        location: null,
+        origin: null,
+        type: "",
+        url: "",
       });
     }
   }, [hero]);

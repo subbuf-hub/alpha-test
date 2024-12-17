@@ -9,8 +9,8 @@ export interface Result {
   species: string;
   type: string;
   gender: string;
-  origin: Origin;
-  location: Location;
+  origin: Origin | null;
+  location: Location | null;
   image: string;
   episode: Episode[];
   url: string;

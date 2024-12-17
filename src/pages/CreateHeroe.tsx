@@ -38,6 +38,13 @@ const CreateHeroe = () => {
     ) {
       const newHero = {
         id: maxId,
+        created: "",
+        episode: [],
+        isLiked: false,
+        location: null,
+        origin: null,
+        type: "",
+        url: "",
         ...formData,
       };
       dispatch(addHero(newHero));
